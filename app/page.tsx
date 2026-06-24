@@ -1,65 +1,156 @@
-import Image from "next/image";
+import Image from 'next/image'
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <>
+      <main className="max-w-5xl mx-auto px-6 py-12 space-y-16">
+        {/* HEADER */}
+        <section>
+          <h1 className="text-4xl font-bold mb-4">
+            Kbank - Projet Bancaire COBOL
+          </h1>
+          <p className="text-lg text-gray-600">
+            Démonstrateur technique simulant un système bancaire minimaliste
+            basé sur COBOL, fichiers indexés/séquentiels et une interface web
+            moderne.
+          </p>
+        </section>
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
+          src="/architecture.png"
+          alt="Architecture générale KBank"
+          width={1200}
+          height={800}
+          className="w-full h-auto"
           priority
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold w-full bg-blue-200 px-3 rounded-sm">
+            Technologies mises en œuvre
+          </h2>
+
+          <div className="space-y-3">
+            <div>
+              <h3 className="text-xl font-semibold mb-6">Frontend</h3>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Next.js</li>
+                <li>React</li>
+                <li>TypeScript</li>
+                <li>TailwindCSS</li>
+                <li>Shadcn UI</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold mb-6">Backend</h3>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Node.js</li>
+                <li>Express</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold mb-6">
+                Architecture & Exécution
+              </h3>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>
+                  Backend exécuté dans un conteneur Docker basé sur l’image
+                  officielle node.js
+                </li>
+                <li>Déploiement en ligne du conteneur backend</li>
+                <li>Simulation mainframe via GnuCOBOL</li>
+                <li>Fichiers indexés ISAM</li>
+                <li>Programmes batch COBOL</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        {/* COMPETENCES */}
+        <section>
+          <h2 className="text-3xl font-semibold mb-6 w-full bg-blue-200 px-3 rounded-sm">
+            Compétences démontrées
+          </h2>
+
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-xl font-semibold mb-6">
+                COBOL & systèmes de données
+              </h3>
+              <ul className="list-disc ml-6 text-gray-700 space-y-2">
+                <li>Manipulation de fichiers indexés (accès direct par clé)</li>
+                <li>
+                  Utilisation de fichiers séquentiels pour traitements batch
+                </li>
+                <li>
+                  Gestion des opérations CRUD métier sur données financières
+                </li>
+                <li>Simulation de logique mainframe (VSAM-like behavior)</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold mb-6">
+                Logique bancaire & transactionnelle
+              </h3>
+              <ul className="list-disc ml-6 text-gray-700 space-y-2">
+                <li>Dépôt et retrait sur comptes bancaires</li>
+                <li>Virements internes (compte à compte)</li>
+                <li>Virements inter-clients</li>
+                <li>Simulation de paiements par carte</li>
+                <li>Modélisation d’un flux transactionnel cohérent</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* PERSPECTIVES */}
+        <section>
+          <h2 className="text-3xl font-semibold mb-6 w-full bg-blue-200 px-3 rounded-sm">
+            Perspectives d’évolution
+          </h2>
+
+          <ul className="list-disc ml-6 text-gray-700 space-y-2">
+            <li>
+              Mise en place d’un système de batch automatisé (CRON toutes les
+              2h)
+            </li>
+            <li>Résolution différée des paiements par carte</li>
+            <li>Ajout d’un moteur de règles métier plus avancé</li>
+            <li>Simulation de traitements bancaires nocturnes</li>
+            <li>
+              Amélioration de la traçabilité des opérations (audit complet)
+            </li>
+            <li>Extension vers des fonctionnalités de reporting financier</li>
+          </ul>
+        </section>
+
+        {/* BILAN */}
+        <section>
+          <h2 className="text-3xl font-semibold mb-6 w-full bg-blue-200 px-3 rounded-sm">
+            Bilan
+          </h2>
+
+          <p className="text-gray-700 leading-relaxed">
+            KBank est un projet de démonstration technique visant à reproduire
+            les mécanismes fondamentaux d’un système bancaire simplifié en
+            combinant des technologies mainframe (COBOL) et une interface web
+            moderne.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+          <p className="text-gray-700 leading-relaxed mt-4">
+            Malgré son périmètre volontairement réduit (5 clients, 2 comptes par
+            client), le projet met en évidence des problématiques réelles de
+            systèmes financiers : cohérence des transactions, gestion des
+            écritures, et robustesse des traitements batch.
+          </p>
+
+          <p className="text-gray-700 leading-relaxed mt-4">
+            L’objectif principal est de démontrer une compréhension des
+            architectures legacy tout en sachant les exposer dans un
+            environnement moderne et exploitable.
+          </p>
+        </section>
       </main>
-    </div>
-  );
+    </>
+  )
 }
