@@ -51,7 +51,8 @@ export default function ExpenseForm() {
       reason: values.label,
     }
     console.log('Données envoyées: ', payload)
-    const res = await fetch('https://kbank.api.krieg.fr/expense', {
+    const NEXT_PUBLIC_API_HOST = process.env.NEXT_PUBLIC_API_HOST
+    const res = await fetch(`${NEXT_PUBLIC_API_HOST}/expense`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -85,7 +86,7 @@ export default function ExpenseForm() {
     })
 
     /*** Updating Client datas and accounts ***/
-    const updatedClients = await mutate('https://kbank.api.krieg.fr/clients')
+    const updatedClients = await mutate(`${NEXT_PUBLIC_API_HOST}/clients`)
     const newActive = updatedClients.find(
       (c: Client) => c.id === activeClient?.id,
     )

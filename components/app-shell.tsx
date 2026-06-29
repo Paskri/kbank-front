@@ -8,12 +8,12 @@ import Image from 'next/image'
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
+  const NEXT_PUBLIC_API_HOST = process.env.NEXT_PUBLIC_API_HOST
   const {
     data: clients,
     error,
     isLoading,
-  } = useSWR<Client[]>('https://kbank.api.krieg.fr/clients', fetcher)
-
+  } = useSWR<Client[]>(`${NEXT_PUBLIC_API_HOST}/clients`, fetcher)
   return (
     <>
       <div className="flex flex-col items-center justify-center bg-zinc-50 font-sans ">

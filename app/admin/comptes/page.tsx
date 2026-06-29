@@ -17,8 +17,9 @@ import { Badge } from '@/components/ui/badge'
 
 export default function AllAccounts() {
   const { cache } = useSWRConfig()
+  const NEXT_PUBLIC_API_HOST = process.env.NEXT_PUBLIC_API_HOST
   const clients = (
-    cache.get('https://kbank.api.krieg.fr/clients') as
+    cache.get(`${NEXT_PUBLIC_API_HOST}/clients`) as
       | { data: Client[] }
       | undefined
   )?.data

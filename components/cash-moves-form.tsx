@@ -73,7 +73,8 @@ export default function CashOperationForm() {
       reason: values.reason,
     }
     console.log('Données envoyées: ', payload)
-    const res = await fetch('https://kbank.api.krieg.fr/cash-move', {
+    const NEXT_PUBLIC_API_HOST = process.env.NEXT_PUBLIC_API_HOST
+    const res = await fetch(`${NEXT_PUBLIC_API_HOST}/cash-move`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -107,7 +108,7 @@ export default function CashOperationForm() {
     /*** Cobol errors handling ?? ***/
 
     /*** Updating Client datas and accounts ***/
-    const updatedClients = await mutate('https://kbank.api.krieg.fr/clients')
+    const updatedClients = await mutate(`${NEXT_PUBLIC_API_HOST}/clients`)
     const newActive = updatedClients.find(
       (c: Client) => c.id === activeClient?.id,
     )

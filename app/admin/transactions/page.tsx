@@ -17,11 +17,12 @@ import useSWR from 'swr'
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
 export default function AllTransactions() {
+  const NEXT_PUBLIC_API_HOST = process.env.NEXT_PUBLIC_API_HOST
   const {
     data: allTransactions,
     error,
     isLoading,
-  } = useSWR<Transaction[]>('https://kbank.api.krieg.fr/alltrans', fetcher, {
+  } = useSWR<Transaction[]>(`${NEXT_PUBLIC_API_HOST}/alltrans`, fetcher, {
     fallbackData: [],
   })
 

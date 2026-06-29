@@ -12,8 +12,9 @@ export default function ComptesClient() {
   const accounts = activeClient?.accounts
 
   const { cache } = useSWRConfig()
+  const NEXT_PUBLIC_API_HOST = process.env.NEXT_PUBLIC_API_HOST
   const clients = (
-    cache.get('https://kbank.api.krieg.fr/clients') as
+    cache.get(`${NEXT_PUBLIC_API_HOST}/clients`) as
       | { data: Client[] }
       | undefined
   )?.data
@@ -93,17 +94,10 @@ export default function ComptesClient() {
                     type = 'Virement'
 
                     /*** to ***/
-                    console.log('virement: ', transaction.reason)
                     const toWho = allAccounts.find(
                       (a) => a.accountId === transaction.to,
                     )
-                    console.log(
-                      toWho,
-                      formatNames(toWho?.ownerName ?? ''),
-                      formatNames(toWho?.ownerFirstName ?? ''),
-                    )
                     if (toWho?.ownerId === transaction.clientId) {
-                      console.log('cond 1')
                       if (
                         toWho?.accountType === 'CURRENT' &&
                         transaction.from === account.accountId
@@ -127,7 +121,6 @@ export default function ComptesClient() {
                       }
                     } else {
                       to = `pour le compte de ${formatNames(toWho?.ownerName ?? '')} ${formatNames(toWho?.ownerFirstName ?? '')}`
-                      console.log('cond 2', to)
                     }
 
                     break

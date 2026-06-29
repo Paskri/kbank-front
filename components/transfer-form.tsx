@@ -41,8 +41,10 @@ export default function TransferForm() {
   const [targetAcc, setTargetAcc] = useState<Account | undefined>(undefined)
 
   const { cache } = useSWRConfig()
+  const NEXT_PUBLIC_API_HOST = process.env.NEXT_PUBLIC_API_HOST
+
   const clients = (
-    cache.get('https://kbank.api.krieg.fr/clients') as
+    cache.get(`${NEXT_PUBLIC_API_HOST}/clients`) as
       | { data: Client[] }
       | undefined
   )?.data
@@ -84,7 +86,6 @@ export default function TransferForm() {
   })
 
   const onSubmit = async (values: FormValues) => {
-    
     const payload = {
       clientId: currentAcc?.ownerId,
       from: currentAcc?.accountId,
@@ -94,7 +95,7 @@ export default function TransferForm() {
     }
 
     console.log('Données envoyées: ', payload)
-    const res = await fetch('https://kbank.api.krieg.fr/transfer', {
+    const res = await fetch(`${NEXT_PUBLIC_API_HOST}/transfer`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -126,13 +127,14 @@ export default function TransferForm() {
     }
 
     const data = await res.json()
+    console.log('Données reçues: ', data)
     toast.success('Virement effectué : ', {
       description: `Vous venez de virer ${values.amount} ${currentAcc?.accountCur} 
       ${to}.
       Le nouveau solde de votre compte est de ${parseInt(data.newBalance) / 100} $${currentAcc?.accountCur}`,
     })
 
-    const updatedClients = await mutate('https://kbank.api.krieg.fr/clients')
+    const updatedClients = await mutate(`${NEXT_PUBLIC_API_HOST}/clients`)
     const newActive = updatedClients.find(
       (c: Client) => c.id === activeClient?.id,
     )

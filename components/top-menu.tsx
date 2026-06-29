@@ -90,7 +90,7 @@ export default function TopMenu({ clients }: Props) {
             <NavigationMenuItem>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <button className={getMenuItemClass('/achat')}>Admin</button>
+                  <button className={getMenuItemClass('/admin')}>Admin</button>
                 </DropdownMenuTrigger>
 
                 <DropdownMenuContent align="start" className="w-fit">

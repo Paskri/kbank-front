@@ -1,4 +1,6 @@
+import { Button } from '@/components/ui/button'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -7,13 +9,22 @@ export default function Home() {
         {/* HEADER */}
         <section>
           <h1 className="text-4xl font-bold mb-4">
-            Kbank - Projet Bancaire COBOL
+            Kbank - Core Banking Architecture Showcase
           </h1>
+
           <p className="text-lg text-gray-600">
             Démonstrateur technique simulant un système bancaire minimaliste
             basé sur COBOL, fichiers indexés/séquentiels et une interface web
             moderne.
           </p>
+          <div className="flex justify-around my-7">
+            <Link href="https://github.com/Paskri/kbank-api">
+              <Button variant={'kbank'}>Code Backend</Button>
+            </Link>
+            <Link href="https://github.com/Paskri/kbank-front">
+              <Button variant={'kbank'}>Code Frontend</Button>
+            </Link>
+          </div>
         </section>
         <Image
           src="/architecture.png"
@@ -41,26 +52,15 @@ export default function Home() {
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold mb-6">Backend</h3>
+              <h3 className="text-xl font-semibold mb-6">Backend (API)</h3>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Node.js</li>
                 <li>Express</li>
-              </ul>
-            </div>
 
-            <div>
-              <h3 className="text-xl font-semibold mb-6">
-                Architecture & Exécution
-              </h3>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>
-                  Backend exécuté dans un conteneur Docker basé sur l’image
-                  officielle node.js
-                </li>
-                <li>Déploiement en ligne du conteneur backend</li>
                 <li>Simulation mainframe via GnuCOBOL</li>
-                <li>Fichiers indexés ISAM</li>
                 <li>Programmes batch COBOL</li>
+                <li>Fichiers indexés ISAM</li>
+                <li>Fichiers sequentiels</li>
               </ul>
             </div>
           </div>
@@ -68,7 +68,7 @@ export default function Home() {
         {/* COMPETENCES */}
         <section>
           <h2 className="text-3xl font-semibold mb-6 w-full bg-blue-200 px-3 rounded-sm">
-            Compétences démontrées
+            Compétences mises en œuvre
           </h2>
 
           <div className="space-y-6">
